@@ -13,7 +13,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(
   cors({
-   
+    origin: ["https://organ-donor-brown.vercel.app/"],
     credentials: true,
   })
 );
