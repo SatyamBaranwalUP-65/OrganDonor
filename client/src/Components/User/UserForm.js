@@ -35,7 +35,7 @@ const UserForm = () => {
     "Heart Valve",
   ];
   useEffect(() => {
-    if (handle == "donate") {
+    if (handle === "donate") {
       setMe(true);
     }
   }, []);
@@ -45,7 +45,7 @@ const UserForm = () => {
     setOrgan(me ? organs.indexOf(user.organ) : 0);
     setAge(me ? user.age : 0);
     setGender(me ? user.gender : "male");
-  }, [me]);
+  }, []);
 
   const donate = () => {
     const formData = {
@@ -93,11 +93,11 @@ const UserForm = () => {
         action=""
         onSubmit={(e) => {
           e.preventDefault();
-          if (bank == "") {
+          if (bank === "") {
             alert("Select a Organ bank");
             return;
           }
-          handle == "donate" ? donate() : request();
+          handle === "donate" ? donate() : request();
         }}
       >
         <fieldset className="border border-solid border-gray-300 p-3">
@@ -105,7 +105,7 @@ const UserForm = () => {
             &nbsp;{handle === "donate" ? "Donate Organ" : "Make Organ Request"}{" "}
             &nbsp;
           </legend>
-          {handle == "request" && (
+          {handle === "request" && (
             <legend align="right">
               <input
                 type="checkbox"
@@ -122,7 +122,7 @@ const UserForm = () => {
             <tr>
               <td>
                 <label className="font-semibold leading-8">
-                  {handle == "request" && "Patient "}Name:
+                  {handle === "request" && "Patient "}Name:
                   <font color="red">*</font>
                 </label>
                 <input
@@ -131,7 +131,7 @@ const UserForm = () => {
                   placeholder="Enter your full name"
                   required
                   value={name}
-                  disabled={me || handle == "donate"}
+                  disabled={me || handle === "donate"}
                   onChange={(e) => setName(e.target.value)}
                 />
               </td>
@@ -142,7 +142,7 @@ const UserForm = () => {
                 <select
                   name="blood"
                   onChange={(e) => setBlood(e.target.value)}
-                  disabled={me || handle == "donate"}
+                  disabled={me || handle === "donate"}
                   className="w-full p-3 text-md border border-silver rounded"
                 >
                   {bloodGroups.map((e, i) => (
@@ -159,7 +159,7 @@ const UserForm = () => {
                 <select
                   name="organ"
                   onChange={(e) => setOrgan(e.target.value)}
-                  disabled={me || handle == "donate"}
+                  disabled={me || handle === "donate"}
                   className="w-full p-3 text-md border border-silver rounded"
                 >
                   {organs.map((e, i) => (
@@ -171,7 +171,7 @@ const UserForm = () => {
               </td>
             </tr>
             <tr>
-              {handle == "request" && (
+              {handle === "request" && (
                 <>
                   <td>
                     <label className="font-semibold  leading-8">
@@ -228,7 +228,7 @@ const UserForm = () => {
               </td> */}
               <td colSpan={2}>
                 <label for="desc" className="font-semibold  leading-8">
-                  {handle == "donate" ? "Disease (if any):" : "Reason:"}
+                  {handle === "donate" ? "Disease (if any):" : "Reason:"}
                 </label>
                 <input
                   className="w-full p-3 text-md border border-silver rounded"
@@ -279,12 +279,16 @@ const UserForm = () => {
                 </select>
               </td>
             </tr>
+            <tr>
+              <p>{bank===""?"No organ bank is available":""}</p>
+            </tr>
           </table>
           <BanksSearch
             state={data.states[state].state}
             district={data.states[state].districts[district]}
             setBank={setBank}
           />
+
           <button
             type="submit"
             className="block mx-auto my-2 mt-4 w-4/12 px-9 py-2 bg-blue-500 text-white-900 hover:bg-gray-darkest rounded-full text-lg font-bold"

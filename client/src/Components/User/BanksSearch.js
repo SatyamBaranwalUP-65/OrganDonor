@@ -38,8 +38,8 @@ const BanksSearch = (props) => {
                 key={i}
                 className="hover:bg-red hover:text-white-900 p-3 cursor-pointer"
                 onClick={() => {
-                  setSelected(selected == i ? -1 : i);
-                  props.setBank(selected == i ? "" : e._id);
+                  setSelected(selected === i ? -1 : i);
+                  props.setBank(selected === i ? "" : e._id);
                 }}
               >
                 <td className="py-2 px-4 border">{e.name}</td>
@@ -55,7 +55,7 @@ const BanksSearch = (props) => {
                         onClick={() => setPopup(i)}
                       ></i>
                       &nbsp;&nbsp;&nbsp;
-                      {selected == i ? (
+                      {selected === i ? (
                         <i class="fa-regular fa-circle-check fa-lg"></i>
                       ) : (
                         <i class="fa-regular fa-circle fa-lg"></i>
