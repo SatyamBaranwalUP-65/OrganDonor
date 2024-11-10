@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
 });
 
 async function sendVerificationEmail(email, token) {
-  const verificationLink = `http://localhost:3177/auth/verify/${token}`;
+  const verificationLink = `https://organdonor.onrender.com/auth/verify/${token}`;
 
   await transporter.sendMail({
     from: process.env.EMAIL,
